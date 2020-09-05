@@ -41,6 +41,13 @@ body {
         left: 0;
         width: 100vw;
         height: 100vh;
+        /*
+        force webkit to use hardware acceleration to get around
+        content disappearing when scrolling over fixed element.
+        see: https://bugs.chromium.org/p/chromium/issues/detail?id=288747
+        */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
     }
 }
 
