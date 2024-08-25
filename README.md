@@ -10,7 +10,7 @@ Full instructions are available on the [GitHub Pages local development documenta
 
 ### Setup
 
-- Make sure you have Ruby 2.7.0 or higher installed: `ruby -v`
+- Make sure you have Ruby 3.0.0 or higher installed: `ruby -v`
 - Make sure you have the version of `bundler` installed in `Gemfile.lock`. If not, install it: `gem install bundler`
 - `bundle install`
 
