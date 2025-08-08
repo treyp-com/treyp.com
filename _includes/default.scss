@@ -30,12 +30,12 @@ body {
         font-size: 16px;
     }
 
-    > * {
+    >* {
         position: relative;
         z-index: 10;
     }
 
-    > svg {
+    >svg {
         position: fixed;
         top: 0;
         left: 0;
@@ -135,7 +135,24 @@ header {
 
         .refresh {
             display: none;
-            opacity: .5;
+            font-weight: bold;
+            opacity: .75;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+            background-size: 4em 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow-cycle 2s linear infinite;
+        }
+
+        @keyframes rainbow-cycle {
+            0% {
+                background-position: 0em 50%;
+            }
+
+            100% {
+                background-position: 4em 50%;
+            }
         }
 
         &:hover,
@@ -247,8 +264,9 @@ ul {
 }
 
 dd {
-    > ol,
-    > ul {
+
+    >ol,
+    >ul {
         margin-left: 0;
     }
 }
