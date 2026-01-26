@@ -1,120 +1,779 @@
----
-layout: default
-title: Trey Philips
----
-<header>
-    <h1>
-        <a href="{{ "assets/treyp.jpg" | relative_url }}"><img src="{{ "assets/treyp-thumb.jpg" | relative_url }}" class="avatar" alt="Photo of Trey Philips" /></a>
-        <a href="/" class="name">Trey Philips <span class="refresh">⟳</span></a>
-    </h1>
-</header>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    <title>Trey Philips</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+      @font-face {
+        font-family: "Bubbledot ICG Fine Pos";
+        src:
+          url("assets/subset-BubbledotICGFinePos.woff2") format("woff2"),
+          url("assets/subset-BubbledotICGFinePos.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
 
-<section id="about">
-    <h2>About</h2>
-    <dl>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font:
+          18px/1.4 "Source Sans Pro",
+          Corbel,
+          "Myriad Pro",
+          "Myriad",
+          Arial,
+          sans-serif;
+        padding: 30px;
+        background-color: #201e20;
+        max-width: 80em;
+        margin: 0 auto;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      @media only screen and (max-width: 780px) {
+        body {
+          padding: 0;
+          font-size: 16px;
+        }
+      }
+
+      body > * {
+        position: relative;
+        z-index: 10;
+      }
+
+      body > svg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        /*
+    force webkit to use hardware acceleration to get around
+    content disappearing when scrolling over fixed element.
+    see: https://bugs.chromium.org/p/chromium/issues/detail?id=288747
+    */
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+
+      header,
+      section,
+      nav,
+      article,
+      aside,
+      canvas {
+        display: block;
+      }
+
+      a {
+        color: #06a;
+        opacity: 1;
+        text-decoration: none;
+        /* fade out color changes on links */
+        -moz-transition-property:
+          opacity,
+          background,
+          color,
+          -moz-box-shadow;
+        -moz-transition-duration: 0.3s;
+        -webkit-transition-property:
+          opacity,
+          background,
+          color,
+          -webkit-box-shadow;
+        -webkit-transition-duration: 0.3s;
+        -o-transition-property:
+          opacity,
+          background,
+          color,
+          -o-box-shadow;
+        -o-transition-duration: 0.3s;
+        transition-property:
+          opacity,
+          background,
+          color,
+          -webkit-box-shadow;
+        transition-duration: 0.3s;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        a {
+          color: #08d;
+        }
+      }
+
+      a:active,
+      a:hover {
+        /* don't fade in, only fade out */
+        -moz-transition-duration: 0;
+        -webkit-transition-duration: 0;
+        -o-transition-duration: 0;
+        transition-duration: 0;
+        opacity: 0.5;
+      }
+
+      header {
+        color: #fff;
+        margin: 10px 3%;
+        -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+        -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+        -o-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+        margin-bottom: 10px;
+      }
+
+      @media only screen and (max-width: 780px) {
+        header {
+          margin: 5%;
+        }
+      }
+
+      header a {
+        color: #efefef;
+        text-decoration: none;
+      }
+
+      header a:active,
+      header a:hover {
+        color: #fff;
+        opacity: 1;
+      }
+
+      header.inverted a {
+        color: #222;
+      }
+
+      header.inverted a:active,
+      header.inverted a:hover {
+        color: #000;
+      }
+
+      header .avatar {
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        height: 1em;
+        width: 1em;
+        vertical-align: top;
+      }
+
+      header .name {
+        margin-left: -0.25em;
+      }
+
+      header .name .refresh {
+        display: none;
+        font-weight: bold;
+        opacity: 0.75;
+        background: linear-gradient(
+          90deg,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          indigo,
+          violet,
+          red
+        );
+        background-size: 4em 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: rainbow-cycle 2s linear infinite;
+      }
+
+      @keyframes rainbow-cycle {
+        0% {
+          background-position: 0em 50%;
+        }
+
+        100% {
+          background-position: 4em 50%;
+        }
+      }
+
+      @media screen and (min-width: 781px) {
+        header .name:hover .refresh,
+        header .name:active .refresh {
+          display: inline;
+        }
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      ol,
+      ul,
+      dl,
+      table,
+      blockquote,
+      header,
+      section {
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        padding-bottom: 0.2em;
+        font-size: 55px;
+        line-height: 1;
+        font-weight: normal;
+        font-family: "Bubbledot ICG Fine Pos", monospace;
+        text-transform: lowercase;
+      }
+
+      @media only screen and (max-width: 780px) {
+        h1 {
+          text-align: center;
+          font-size: 36px;
+        }
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      h3 {
+        font-size: 1.25em;
+      }
+
+      section {
+        background-color: #efefef;
+        color: #222;
+        padding: 2%;
+        margin: 0 1% 20px;
+        width: 44%;
+        -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        section {
+          background-color: #1f1f1f;
+          color: #ddd;
+        }
+      }
+
+      @media only screen and (max-width: 780px) {
+        section {
+          width: 80%;
+          padding: 5%;
+          margin: 5%;
+        }
+      }
+
+      section#about {
+        float: left;
+      }
+
+      @media only screen and (max-width: 780px) {
+        section#about {
+          float: none;
+        }
+      }
+
+      section#projects {
+        float: right;
+      }
+
+      @media only screen and (max-width: 780px) {
+        section#projects {
+          float: none;
+        }
+      }
+
+      section#elsewhere {
+        clear: left;
+      }
+
+      :last-child {
+        margin-bottom: 0;
+      }
+
+      .clear {
+        clear: both;
+      }
+
+      dd,
+      ol,
+      ul {
+        margin-left: 40px;
+      }
+
+      dd > ol,
+      dd > ul {
+        margin-left: 0;
+      }
+
+      abbr {
+        text-decoration: none;
+        border-bottom: 1px dotted #fff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        abbr {
+          border-bottom-color: #000;
+        }
+      }
+
+      address {
+        display: inline;
+      }
+
+      #elsewhere ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
+
+      #elsewhere a .username {
+        opacity: 0.5;
+        font-style: italic;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="assets/treyp.jpg"
+          ><img
+            src="assets/treyp-thumb.jpg"
+            class="avatar"
+            alt="Photo of Trey Philips"
+        /></a>
+        <a href="/" class="name">Trey Philips <span class="refresh">⟳</span></a>
+      </h1>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <dl>
         <dt>Role</dt>
         <dd>Principal software engineer (web UI focus)</dd>
         <dt>Location</dt>
         <dd>Austin, <abbr title="Texas">TX</abbr></dd>
         <dt>Education</dt>
         <dd>
-            <a href="https://www.utexas.edu">The University of Texas</a> (Austin, <abbr title="Texas">TX</abbr>)<br />
-            <time datetime="2004-08-01">August 2004</time> &ndash; <time datetime="2008-12-01">December 2008</time><br />
-            <abbr title="Bachelor of Arts">B.A.</abbr> Philosophy<br />
-            <abbr title="Bachelor of Science">B.S.</abbr> Psychology
+          <a href="https://www.utexas.edu">The University of Texas</a> (Austin,
+          <abbr title="Texas">TX</abbr>)<br />
+          <time datetime="2004-08-01">August 2004</time> &ndash;
+          <time datetime="2008-12-01">December 2008</time><br />
+          <abbr title="Bachelor of Arts">B.A.</abbr> Philosophy<br />
+          <abbr title="Bachelor of Science">B.S.</abbr> Psychology
         </dd>
-    </dl>
-</section>
+      </dl>
+    </section>
 
-<section id="projects">
-    <h2>Projects</h2>
-    <h3>Personal</h3>
-    <dl>
-        <dt><a href="https://islaketravisfullyet.com/">Is Lake Travis Full Yet?</a></dt>
-        <dd>A site that shows current and historical water levels for Lake Travis, the reservoir that serves as the source of drinking water for Austin, Texas</dd>
+    <section id="projects">
+      <h2>Projects</h2>
+      <h3>Personal</h3>
+      <dl>
+        <dt>
+          <a href="https://islaketravisfullyet.com/"
+            >Is Lake Travis Full Yet?</a
+          >
+        </dt>
+        <dd>
+          A site that shows current and historical water levels for Lake Travis,
+          the reservoir that serves as the source of drinking water for Austin,
+          Texas
+        </dd>
         <!-- <dt><a href="https://treyp.github.io/nightsky/">Nightsky</a> (still in early stages)</dt>
-        <dd>A web client for <a href="https://blueskyweb.xyz/">Bluesky</a> using <a href="https://atproto.com/">the AT protocol</a>, a protocol for a federated Twitter-like product that originally started inside Twitter</dd> -->
-        <dt><a href="https://treyp.github.io/thebutton/">The Button Snitch</a></dt>
-        <dd>Real-time charts (including a scatterplot and histogram), notifications, and other features to monitor <a href="https://www.reddit.com/r/thebutton/">Reddit's /r/thebutton</a></dd>
+            <dd>A web client for <a href="https://blueskyweb.xyz/">Bluesky</a> using <a href="https://atproto.com/">the AT protocol</a>, a protocol for a federated Twitter-like product that originally started inside Twitter</dd> -->
+        <dt>
+          <a href="https://treyp.github.io/thebutton/">The Button Snitch</a>
+        </dt>
+        <dd>
+          Real-time charts (including a scatterplot and histogram),
+          notifications, and other features to monitor
+          <a href="https://www.reddit.com/r/thebutton/"
+            >Reddit's /r/thebutton</a
+          >
+        </dd>
         <dt>Krishanu: A Netflix Queue Manager (offline)</dt>
-        <dd>A web app to sort your Netflix queue (e.g. by runtime) and add notes to items in it</dd>
-        <dt>Tweeting Too Hard (offline) &mdash; <a href="https://web.archive.org/web/20110129104959/http://tweetingtoohard.com/">v1</a> (<a href="{{ "assets/tth-v1.png" | relative_url }}">screenshot</a>), <a href="https://web.archive.org/web/20130403042005/http://tweetingtoohard.com/">v2</a> (<a href="{{ "assets/tth-v2.jpg" | relative_url }}">screenshot</a>)</dt>
-        <dd>&ldquo;Where self-important tweets get the recognition they deserve.&rdquo; A web app where tweets were voted on (Reddit-style) to find the most self-important of them all. Received press coverage across major media (<a href="https://content.time.com/time/nation/article/0,8599,1901668,00.html">Time</a>, <a href="https://www.nytimes.com/2010/04/29/fashion/29twitter.html">New York Times</a>, <a href="https://www.wired.com/2009/08/pl-playlist-9/">Wired</a>, etc.).</dd>
-        <dt><a href="https://www.facebook.com/extendedinfo">Extended Info</a> (acquired by SideStep)</dt>
-        <dd><a href="https://web.archive.org/web/20090708190109/http://developers.facebook.com//news.php?blog=1&amp;story=23">Winner of the Facebook F8 Contest</a>. With Facebook, your profile comes with fields such as Activities, Interests, and Favorite Music, but Extended Info allows you to add extra fields to your profile, such as Currently Reading, Favorite Foods, or anything you can think of.</dd>
+        <dd>
+          A web app to sort your Netflix queue (e.g. by runtime) and add notes
+          to items in it
+        </dd>
+        <dt>
+          Tweeting Too Hard (offline) &mdash;
+          <a
+            href="https://web.archive.org/web/20110129104959/http://tweetingtoohard.com/"
+            >v1</a
+          >
+          (<a href="assets/tth-v1.png">screenshot</a>),
+          <a
+            href="https://web.archive.org/web/20130403042005/http://tweetingtoohard.com/"
+            >v2</a
+          >
+          (<a href="assets/tth-v2.jpg">screenshot</a>)
+        </dt>
+        <dd>
+          &ldquo;Where self-important tweets get the recognition they
+          deserve.&rdquo; A web app where tweets were voted on (Reddit-style) to
+          find the most self-important of them all. Received press coverage
+          across major media (<a
+            href="https://content.time.com/time/nation/article/0,8599,1901668,00.html"
+            >Time</a
+          >,
+          <a href="https://www.nytimes.com/2010/04/29/fashion/29twitter.html"
+            >New York Times</a
+          >, <a href="https://www.wired.com/2009/08/pl-playlist-9/">Wired</a>,
+          etc.).
+        </dd>
+        <dt>
+          <a href="https://www.facebook.com/extendedinfo">Extended Info</a>
+          (acquired by SideStep)
+        </dt>
+        <dd>
+          <a
+            href="https://web.archive.org/web/20090708190109/http://developers.facebook.com//news.php?blog=1&amp;story=23"
+            >Winner of the Facebook F8 Contest</a
+          >. With Facebook, your profile comes with fields such as Activities,
+          Interests, and Favorite Music, but Extended Info allows you to add
+          extra fields to your profile, such as Currently Reading, Favorite
+          Foods, or anything you can think of.
+        </dd>
         <!-- <dt><a href="http://www.hasbenwellsmovedtoaustin.com/">Has Ben Wells Moved To Austin?</a></dt>
-        <dd>A single-serving site giving the status of whether or not Ben Wells has moved back to Austin</dd> -->
-    </dl>
-    <h3>Business</h3>
-    <dl>
+            <dd>A single-serving site giving the status of whether or not Ben Wells has moved back to Austin</dd> -->
+      </dl>
+      <h3>Business</h3>
+      <dl>
         <dt><a href="https://www.expediagroup.com/">Expedia Group</a></dt>
-        <dd>Principal engineer for the supply side of the company. Previously, for the <a href="https://www.vrbo.com">Vrbo</a> brand (originally HomeAway), development on web apps using React and hapi.js, and mobile apps using React Native.</dd>
-        <dt>Zvents (acquired by <a href="https://www.ebay.com">eBay</a>&rsquo;s <a href="https://www.stubhub.com">StubHub</a>, later shut down; <a href="https://www.crunchbase.com/organization/zvents">CrunchBase listing</a>)</dt>
-        <dd>Full stack for a responsive redesign, including a Rails-based API used by other StubHub teams and Node-based front end; front end for previous products</dd>
+        <dd>
+          Principal engineer for the supply side of the company. Previously, for
+          the <a href="https://www.vrbo.com">Vrbo</a> brand (originally
+          HomeAway), development on web apps using React and hapi.js, and mobile
+          apps using React Native.
+        </dd>
+        <dt>
+          Zvents (acquired by <a href="https://www.ebay.com">eBay</a>&rsquo;s
+          <a href="https://www.stubhub.com">StubHub</a>, later shut down;
+          <a href="https://www.crunchbase.com/organization/zvents"
+            >CrunchBase listing</a
+          >)
+        </dt>
+        <dd>
+          Full stack for a responsive redesign, including a Rails-based API used
+          by other StubHub teams and Node-based front end; front end for
+          previous products
+        </dd>
         <dt><a href="https://www.dailydot.com">The Daily Dot</a></dt>
-        <dd>Built the original front end for this news site about internet communities</dd>
+        <dd>
+          Built the original front end for this news site about internet
+          communities
+        </dd>
         <dt><a href="https://www.apnews.com">Associated Press</a></dt>
-        <dd>Touch-based JavaScript development for a version of the site optimized for tablets</dd>
-        <dt>Chomp (acquired by <a href="https://www.apple.com">Apple</a> and shut down; <a href="https://en.wikipedia.org/wiki/Chomp_(search_engine)">Wikipedia article</a>)</dt>
-        <dd>Front end for the website and WebView-based mobile SDK for this mobile app search engine</dd>
+        <dd>
+          Touch-based JavaScript development for a version of the site optimized
+          for tablets
+        </dd>
+        <dt>
+          Chomp (acquired by <a href="https://www.apple.com">Apple</a> and shut
+          down;
+          <a href="https://en.wikipedia.org/wiki/Chomp_(search_engine)"
+            >Wikipedia article</a
+          >)
+        </dt>
+        <dd>
+          Front end for the website and WebView-based mobile SDK for this mobile
+          app search engine
+        </dd>
         <dt>Classhive (shut down)</dt>
-        <dd>Lead developer, or rather first engineer at a small startup. Full stack development for a social product for students incubated by <a href="https://www.thinkwell.com/">Thinkwell</a>.</dd>
+        <dd>
+          Lead developer, or rather first engineer at a small startup. Full
+          stack development for a social product for students incubated by
+          <a href="https://www.thinkwell.com/">Thinkwell</a>.
+        </dd>
         <dt>3jam (acquired by <a href="https://www.skype.com">Skype</a>)</dt>
-        <dd>Front end for this group text messaging product, and, after pivoting, a virtual number (Google Voice-like) product</dd>
-        <dt><a href="https://www.icann.org/"><abbr title="Internet Corporation for Assigned Names and Numbers">ICANN</abbr></a></dt>
-        <dd>Updated front end for the <a href="https://www.iana.org/assignments/enterprise-numbers/">Private Enterprise Number</a> management system</dd>
-        <dt>SideStep (acquired by <a href="https://www.kayak.com">Kayak</a>)</dt>
-        <dd>Worked on my <a href="https://www.facebook.com/extendedinfo">Extended Info</a> Facebook application after they acquired it, and on their <a href="https://www.facebook.com/apps/application.php?id=2869125584">Trips</a> application</dd>
-        <dt><abbr title="Science Undergraduate Research Group">SURGe</abbr> (<a href="{{ "assets/surge-site.png" | relative_url }}">screenshot</a>)</dt>
-        <dd>A student organization for scientific research. I created and maintained their site during my college years.</dd>
-        <dt>Radar.net (<a href="https://en.wikipedia.org/wiki/Radar.net">Wikipedia article</a>)</dt>
-        <dd>Radar.net was a mobile photo sharing app before those took off. I created a site for their "ambassadors," representatives who promoted the product on college campuses and elsewhere.</dd>
-    </dl>
-    <h3>Other ways we may have crossed paths</h3>
-    <dl>
+        <dd>
+          Front end for this group text messaging product, and, after pivoting,
+          a virtual number (Google Voice-like) product
+        </dd>
+        <dt>
+          <a href="https://www.icann.org/"
+            ><abbr title="Internet Corporation for Assigned Names and Numbers"
+              >ICANN</abbr
+            ></a
+          >
+        </dt>
+        <dd>
+          Updated front end for the
+          <a href="https://www.iana.org/assignments/enterprise-numbers/"
+            >Private Enterprise Number</a
+          >
+          management system
+        </dd>
+        <dt>
+          SideStep (acquired by <a href="https://www.kayak.com">Kayak</a>)
+        </dt>
+        <dd>
+          Worked on my
+          <a href="https://www.facebook.com/extendedinfo">Extended Info</a>
+          Facebook application after they acquired it, and on their
+          <a href="https://www.facebook.com/apps/application.php?id=2869125584"
+            >Trips</a
+          >
+          application
+        </dd>
+        <dt>
+          <abbr title="Science Undergraduate Research Group">SURGe</abbr> (<a
+            href="assets/surge-site.png"
+            >screenshot</a
+          >)
+        </dt>
+        <dd>
+          A student organization for scientific research. I created and
+          maintained their site during my college years.
+        </dd>
+        <dt>
+          Radar.net (<a href="https://en.wikipedia.org/wiki/Radar.net"
+            >Wikipedia article</a
+          >)
+        </dt>
+        <dd>
+          Radar.net was a mobile photo sharing app before those took off. I
+          created a site for their "ambassadors," representatives who promoted
+          the product on college campuses and elsewhere.
+        </dd>
+      </dl>
+      <h3>Other ways we may have crossed paths</h3>
+      <dl>
         <dt><a href="https://www.quora.com/profile/Trey-Philips">Quora</a></dt>
         <dd>I used to be an admin and pretty active member on the site.</dd>
         <dt>Conjunctured</dt>
-        <dd>I was a member of this Austin coworking house (no longer in business).</dd>
-        <dt>Facebook Developer Garage Singapore (<a href="https://www.techinasia.com/facebookdevsg-e27">local coverage</a>)</dt>
-        <dd>Keynote speaker. Presentation: <a href="https://www.slideshare.net/trey/getting-love-from-the-facebook-platform">Getting Love from the Facebook Platform</a>.</dd>
+        <dd>
+          I was a member of this Austin coworking house (no longer in business).
+        </dd>
+        <dt>
+          Facebook Developer Garage Singapore (<a
+            href="https://www.techinasia.com/facebookdevsg-e27"
+            >local coverage</a
+          >)
+        </dt>
+        <dd>
+          Keynote speaker. Presentation:
+          <a
+            href="https://www.slideshare.net/trey/getting-love-from-the-facebook-platform"
+            >Getting Love from the Facebook Platform</a
+          >.
+        </dd>
         <dt><a href="/else/googleblog.html">The Google Blog</a></dt>
-        <dd>I didn&rsquo;t hack it, but I did take it over for about a half hour.</dd>
-        <dt><a href="{{ "assets/bloggercontest.pdf" | relative_url }}">The original Blogger templates</a></dt>
+        <dd>
+          I didn&rsquo;t hack it, but I did take it over for about a half hour.
+        </dd>
+        <dt>
+          <a href="assets/bloggercontest.pdf">The original Blogger templates</a>
+        </dt>
         <dd>I made the robot.</dd>
         <dt>Various articles/interviews</dt>
         <dd>
-            <ul>
-                <li><a href="{{ "/assets/BT-191107-Trey-Philips-Having-fun-with-Facebook-gadgets.pdf" | relative_url }}">The Business Times: Having fun with Facebook gadgets (PDF)</a></li>
-                <li><a href="https://www.technologyreview.com/2007/09/20/223754/refining-facebooks-applications/">Technology Review: Refining Facebook&rsquo;s Applications</a></li>
-                <li>&ldquo;<a href="/else/adbusters/">Grasshopper</a>&rdquo; &mdash; Published in <a href="https://www.adbusters.org">Adbusters magazine</a> #68 (November/December 2007)</li>
-            </ul>
+          <ul>
+            <li>
+              <a
+                href="assets/BT-191107-Trey-Philips-Having-fun-with-Facebook-gadgets.pdf"
+                >The Business Times: Having fun with Facebook gadgets (PDF)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.technologyreview.com/2007/09/20/223754/refining-facebooks-applications/"
+                >Technology Review: Refining Facebook&rsquo;s Applications</a
+              >
+            </li>
+            <li>
+              &ldquo;<a href="/else/adbusters/">Grasshopper</a>&rdquo; &mdash;
+              Published in
+              <a href="https://www.adbusters.org">Adbusters magazine</a> #68
+              (November/December 2007)
+            </li>
+          </ul>
         </dd>
-    </dl>
-</section>
+      </dl>
+    </section>
 
-<section id="elsewhere">
-    <h2>Elsewhere</h2>
-    <ul>
-        <li><a href="https://www.linkedin.com/in/treyp/">LinkedIn: <span class="username">treyp</span></a></li>
-        <li><a href="https://twitter.com/treyp">Twitter: <span class="username">treyp</span></a></li>
-        <li><a href="https://github.com/treyp">GitHub: <span class="username">treyp</span></a></li>
-        <li><a href="https://www.inaturalist.org/people/3725858">iNaturalist: <span class="username">treyjp</span></a></li>
-        <li><a href="https://news.ycombinator.com/user?id=treyp">Hacker News: <span class="username">treyp</span></a></li>
-    </ul>
-</section>
+    <section id="elsewhere">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li>
+          <a href="https://www.linkedin.com/in/treyp/"
+            >LinkedIn: <span class="username">treyp</span></a
+          >
+        </li>
+        <li>
+          <a href="https://twitter.com/treyp"
+            >Twitter: <span class="username">treyp</span></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/treyp"
+            >GitHub: <span class="username">treyp</span></a
+          >
+        </li>
+        <li>
+          <a href="https://www.inaturalist.org/people/3725858"
+            >iNaturalist: <span class="username">treyjp</span></a
+          >
+        </li>
+        <li>
+          <a href="https://news.ycombinator.com/user?id=treyp"
+            >Hacker News: <span class="username">treyp</span></a
+          >
+        </li>
+      </ul>
+    </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <dl>
+    <section id="contact">
+      <h2>Contact</h2>
+      <dl>
         <dt>Email</dt>
-        <dd><a class="email" href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#116;&#114;&#101;&#121;&#x6a;&#112;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;">&#116;&#114;&#101;&#121;&#x6a;&#112;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a></dd>
-    </dl>
-</section>
+        <dd>
+          <a
+            class="email"
+            href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#116;&#114;&#101;&#121;&#x6a;&#112;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;"
+            >&#116;&#114;&#101;&#121;&#x6a;&#112;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#x6d;</a
+          >
+        </dd>
+      </dl>
+    </section>
 
-<div class="clear"></div>
+    <div class="clear"></div>
 
-<script src="https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js"></script>
-<script>
-    {% include index.js %}
-</script>
+    <script src="https://unpkg.com/trianglify@^4/dist/trianglify.bundle.js"></script>
+    <script>
+      (function () {
+        function debounce(func, wait) {
+          var timeout;
+          return function executedFunction() {
+            var context = this;
+            var args = arguments;
+            var later = function () {
+              timeout = null;
+              func.apply(context, args);
+            };
+            window.clearTimeout(timeout);
+            timeout = window.setTimeout(later, wait);
+          };
+        }
+
+        function hexToLightness(H) {
+          var r = ("0x" + H[1] + H[2]) / 255;
+          var g = ("0x" + H[3] + H[4]) / 255;
+          var b = ("0x" + H[5] + H[6]) / 255;
+          var cmin = Math.min(r, g, b);
+          var cmax = Math.max(r, g, b);
+          return +(((cmax + cmin) / 2) * 100).toFixed(1);
+        }
+
+        function lightnessAverage(colors) {
+          return (
+            colors
+              .map((hexColor) => hexToLightness(hexColor))
+              .reduce((a, b) => a + b, 0) / colors.length
+          );
+        }
+
+        function replaceNode(oldChild, newChild, parentNode) {
+          if (oldChild && oldChild.parentNode.replaceChild) {
+            oldChild.parentNode.replaceChild(newChild, oldChild);
+          } else {
+            if (oldChild) {
+              oldChild.parentNode.removeChild(oldChild);
+            }
+            parentNode.insertBefore(
+              newChild,
+              oldChild && oldChild.nextSibling
+                ? oldChild.nextSibling
+                : parentNode.firstChild,
+            );
+          }
+        }
+
+        function renderBackground(generateNewPattern) {
+          var backgroundID = "background";
+          var resizedOptions = {};
+          var colorPalettes = Object.keys(
+            window.trianglify.defaultOptions.palette,
+          );
+          if (generateNewPattern) {
+            resizedOptions = {
+              variance: Math.random(),
+              seed: Math.random(),
+              xColors:
+                colorPalettes[Math.floor(Math.random() * colorPalettes.length)],
+            };
+          } else if (backgroundPattern) {
+            for (var k in backgroundPattern.opts) {
+              resizedOptions[k] = backgroundPattern.opts[k];
+            }
+          }
+          resizedOptions.cellSize =
+            window.innerWidth / 50 + Math.random() * 100;
+          resizedOptions.width = window.innerWidth;
+          resizedOptions.height = window.innerHeight;
+          backgroundPattern = window.trianglify(resizedOptions);
+          var backgroundNode = backgroundPattern.toSVG();
+          backgroundNode.id = backgroundID;
+          replaceNode(
+            document.getElementById(backgroundID),
+            backgroundNode,
+            document.body,
+          );
+          // darken the name if its background colors are light
+          var lightness = lightnessAverage(
+            window.trianglify.defaultOptions.palette[
+              backgroundPattern.opts.xColors
+            ].slice(1, window.innerWidth > window.innerHeight ? 3 : 2),
+          );
+          document.querySelector("header").className =
+            lightness >= 50 ? "inverted" : "";
+        }
+
+        var backgroundPattern;
+        renderBackground(true);
+        window.addEventListener(
+          "resize",
+          debounce(function () {
+            renderBackground();
+          }, 100),
+        );
+
+        // regenerate background when name is clicked
+        document.querySelector(".name").addEventListener("click", function (e) {
+          e.preventDefault();
+          renderBackground(true);
+        });
+      })();
+    </script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FTRXYHQQG3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-FTRXYHQQG3");
+    </script>
+  </body>
+</html>
