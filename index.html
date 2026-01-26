@@ -5,6 +5,49 @@
     <meta name="viewport" content="initial-scale=1" />
     <title>Trey Philips</title>
     <style>
+      :root {
+        --body-padding: 30px;
+        --body-font-size: 18px;
+        --header-margin: 10px 3%;
+        --h1-font-size: 55px;
+        --h1-text-align: auto;
+        --section-width: 44%;
+        --section-padding: 2%;
+        --section-margin: 0 1% 20px;
+        --section-bg-color: #efefef;
+        --section-text-color: #222;
+        --section-about-float: left;
+        --section-projects-float: right;
+        --a-color: #06a;
+        --abbr-border-color: #fff;
+        --refresh-display: inline;
+      }
+
+      @media only screen and (max-width: 780px) {
+        :root {
+          --body-padding: 0;
+          --body-font-size: 16px;
+          --header-margin: 5%;
+          --h1-font-size: 36px;
+          --h1-text-align: center;
+          --section-width: 80%;
+          --section-padding: 5%;
+          --section-margin: 5%;
+          --section-about-float: none;
+          --section-projects-float: none;
+          --refresh-display: none;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --a-color: #08d;
+          --section-bg-color: #1f1f1f;
+          --section-text-color: #ddd;
+          --abbr-border-color: #000;
+        }
+      }
+
       @font-face {
         font-family: "Bubbledot ICG Fine Pos";
         src:
@@ -21,24 +64,17 @@
 
       body {
         font:
-          18px/1.4 "Source Sans Pro",
+          var(--body-font-size)/1.4 "Source Sans Pro",
           Corbel,
           "Myriad Pro",
           "Myriad",
           Arial,
           sans-serif;
-        padding: 30px;
+        padding: var(--body-padding);
         background-color: #201e20;
         max-width: 80em;
         margin: 0 auto;
         -webkit-font-smoothing: antialiased;
-      }
-
-      @media only screen and (max-width: 780px) {
-        body {
-          padding: 0;
-          font-size: 16px;
-        }
       }
 
       body > * {
@@ -71,7 +107,7 @@
       }
 
       a {
-        color: #06a;
+        color: var(--a-color);
         opacity: 1;
         text-decoration: none;
         /* fade out color changes on links */
@@ -101,12 +137,6 @@
         transition-duration: 0.3s;
       }
 
-      @media (prefers-color-scheme: dark) {
-        a {
-          color: #08d;
-        }
-      }
-
       a:active,
       a:hover {
         /* don't fade in, only fade out */
@@ -119,18 +149,12 @@
 
       header {
         color: #fff;
-        margin: 10px 3%;
+        margin: var(--header-margin);
         -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
         -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
         -o-text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
         margin-bottom: 10px;
-      }
-
-      @media only screen and (max-width: 780px) {
-        header {
-          margin: 5%;
-        }
       }
 
       header a {
@@ -187,6 +211,11 @@
         animation: rainbow-cycle 2s linear infinite;
       }
 
+      header .name:hover .refresh,
+      header .name:active .refresh {
+        display: var(--refresh-display);
+      }
+
       @keyframes rainbow-cycle {
         0% {
           background-position: 0em 50%;
@@ -194,13 +223,6 @@
 
         100% {
           background-position: 4em 50%;
-        }
-      }
-
-      @media screen and (min-width: 781px) {
-        header .name:hover .refresh,
-        header .name:active .refresh {
-          display: inline;
         }
       }
 
@@ -221,18 +243,12 @@
       h1 {
         margin-bottom: 0;
         padding-bottom: 0.2em;
-        font-size: 55px;
+        font-size: var(--h1-font-size);
+        text-align: var(--h1-text-align);
         line-height: 1;
         font-weight: normal;
         font-family: "Bubbledot ICG Fine Pos", monospace;
         text-transform: lowercase;
-      }
-
-      @media only screen and (max-width: 780px) {
-        h1 {
-          text-align: center;
-          font-size: 36px;
-        }
       }
 
       h2 {
@@ -244,11 +260,11 @@
       }
 
       section {
-        background-color: #efefef;
-        color: #222;
-        padding: 2%;
-        margin: 0 1% 20px;
-        width: 44%;
+        background-color: var(--section-bg-color);
+        color: var(--section-text-color);
+        padding: var(--section-padding);
+        margin: var(--section-margin);
+        width: var(--section-width);
         -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
         -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
         -o-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
@@ -258,39 +274,12 @@
         border-radius: 3px;
       }
 
-      @media (prefers-color-scheme: dark) {
-        section {
-          background-color: #1f1f1f;
-          color: #ddd;
-        }
-      }
-
-      @media only screen and (max-width: 780px) {
-        section {
-          width: 80%;
-          padding: 5%;
-          margin: 5%;
-        }
-      }
-
       section#about {
-        float: left;
-      }
-
-      @media only screen and (max-width: 780px) {
-        section#about {
-          float: none;
-        }
+        float: var(--section-about-float);
       }
 
       section#projects {
-        float: right;
-      }
-
-      @media only screen and (max-width: 780px) {
-        section#projects {
-          float: none;
-        }
+        float: var(--section-projects-float);
       }
 
       section#elsewhere {
@@ -318,13 +307,7 @@
 
       abbr {
         text-decoration: none;
-        border-bottom: 1px dotted #fff;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        abbr {
-          border-bottom-color: #000;
-        }
+        border-bottom: 1px dotted var(--abbr-border-color);
       }
 
       address {
