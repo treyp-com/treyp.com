@@ -168,6 +168,7 @@
         opacity: 1;
       }
 
+      header.inverted,
       header.inverted a {
         color: #222;
       }
@@ -182,16 +183,27 @@
         border-radius: 50%;
         height: 1em;
         width: 1em;
-        vertical-align: top;
+        vertical-align: middle;
+        border: 2px solid transparent;
+      }
+
+      header .avatar:hover {
+        border-color: inherit;
       }
 
       header .name {
         margin-left: -0.25em;
       }
 
-      header .name .refresh {
-        display: none;
+      header .refresh {
+        float: right;
+        font-size: var(--h1-font-size);
+        line-height: 1;
         font-weight: bold;
+      }
+
+      header .refresh:hover .icon,
+      header .refresh:active .icon {
         opacity: 0.75;
         background: linear-gradient(
           90deg,
@@ -209,11 +221,6 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         animation: rainbow-cycle 2s linear infinite;
-      }
-
-      header .name:hover .refresh,
-      header .name:active .refresh {
-        display: var(--refresh-display);
       }
 
       @keyframes rainbow-cycle {
@@ -331,6 +338,7 @@
   </head>
   <body>
     <header>
+      <a class="refresh" href="/"><span class="icon">⟳</span></a>
       <h1>
         <a href="assets/treyp.jpg"
           ><img
@@ -338,7 +346,7 @@
             class="avatar"
             alt="Photo of Trey Philips"
         /></a>
-        <a href="/" class="name">Trey Philips <span class="refresh">⟳</span></a>
+        <span class="name">Trey Philips</span>
       </h1>
     </header>
 
@@ -736,10 +744,12 @@
         );
 
         // regenerate background when name is clicked
-        document.querySelector(".name").addEventListener("click", function (e) {
-          e.preventDefault();
-          renderBackground(true);
-        });
+        document
+          .querySelector(".refresh")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            renderBackground(true);
+          });
       })();
     </script>
 
