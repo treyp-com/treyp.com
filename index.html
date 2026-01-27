@@ -91,18 +91,10 @@
         z-index: 10;
       }
 
-      body > svg {
-        position: fixed;
+      #background {
+        position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        /*
-      force webkit to use hardware acceleration to get around
-      content disappearing when scrolling over fixed element.
-      see: https://bugs.chromium.org/p/chromium/issues/detail?id=288747
-      */
-        transform: translateZ(0);
       }
 
       header,
@@ -682,23 +674,30 @@
               resizedOptions[k] = backgroundPattern.opts[k];
             }
           }
+          var existingBackground = document.getElementById(backgroundID);
+          if (existingBackground) {
+            existingBackground.style.width = "100%";
+            existingBackground.style.height = "100%";
+          }
           resizedOptions.cellSize =
-            window.innerWidth / 50 + Math.random() * 100;
-          resizedOptions.width = window.innerWidth;
-          resizedOptions.height = window.innerHeight;
+            document.scrollingElement.scrollWidth / 50 + Math.random() * 100;
+          resizedOptions.width = document.scrollingElement.scrollWidth;
+          resizedOptions.height = document.scrollingElement.scrollHeight;
           backgroundPattern = window.trianglify(resizedOptions);
           var backgroundNode = backgroundPattern.toSVG();
           backgroundNode.id = backgroundID;
-          replaceNode(
-            document.getElementById(backgroundID),
-            backgroundNode,
-            document.body,
-          );
+          replaceNode(existingBackground, backgroundNode, document.body);
           // darken the name if its background colors are light
           var lightness = lightnessAverage(
             window.trianglify.defaultOptions.palette[
               backgroundPattern.opts.xColors
-            ].slice(1, window.innerWidth > window.innerHeight ? 3 : 2),
+            ].slice(
+              1,
+              document.scrollingElement.scrollWidth >
+                document.scrollingElement.scrollHeight
+                ? 3
+                : 2,
+            ),
           );
           document.querySelector("header").className =
             lightness >= 50 ? "inverted" : "";
@@ -713,7 +712,7 @@
           }, 100),
         );
 
-        // regenerate background when name is clicked
+        // regenerate background when icon is clicked
         document
           .querySelector(".refresh")
           .addEventListener("click", function (e) {
